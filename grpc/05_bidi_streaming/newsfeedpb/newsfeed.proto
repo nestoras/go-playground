@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package newsfeed;
+option go_package="newsfeedpb";
+
+
+
+message FindMaximumLikeRequest {
+    int32 number = 1;
+}
+
+message FindMaximumLikeResponse {
+    int32 maximum = 1;
+}
+
+
+service NewsfeedService{
+    // BiDi Streaming
+    rpc FindMaximumLike(stream FindMaximumLikeRequest) returns (stream FindMaximumLikeResponse) {};
+}

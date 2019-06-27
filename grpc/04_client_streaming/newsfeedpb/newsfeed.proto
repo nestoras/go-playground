@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package newsfeed;
+option go_package="newsfeedpb";
+
+
+message User {
+    int64 user_id = 1;
+}
+
+
+message NewsfeedClientRequest {
+    User user = 1;
+}
+
+message NewsfeedClientResponse {
+    string result = 1;
+}
+
+
+service NewsfeedService{
+    // Client Streaming
+    rpc NewsfeedClient(stream NewsfeedClientRequest) returns (NewsfeedClientResponse) {};
+
+}

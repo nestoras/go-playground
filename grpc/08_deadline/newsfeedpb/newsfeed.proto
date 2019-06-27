@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package newsfeed;
+option go_package="newsfeedpb";
+
+
+message Newsfeed {
+    string text = 1;
+    string author = 2;
+}
+
+
+message NewsfeedDeadlineRequest {
+    Newsfeed newsfeed = 1;
+}
+
+message NewsfeedDeadlineResponse {
+    string result = 1;
+}
+
+
+service NewsfeedService{
+    // Unary
+    rpc NewsfeedDeadline(NewsfeedDeadlineRequest) returns (NewsfeedDeadlineResponse) {};
+}
